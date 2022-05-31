@@ -17,13 +17,48 @@
         <li>
             <a href="#">Menu1</a>
         </li>
-        <li><a href="#">Menu2</a></li>
-        <li><a href="#">Menu3</a></li>
-        <li><a href="#">Menu4</a></li>
+        <li>
+            <a href="#">Menu2</a>
+        </li>
+        <li>
+            <a href="#">Menu3</a>
+        </li>
+        <li>
+            <a href="#">Menu4</a>
+        </li>
     </ul>
     <script>
-       
+       const lists = document.querySelector('.gnb')
+       const list = document.querySelectorAll('.gnb li')
    
-        </script>
+        list.forEach((ele)=>{
+            let newA = ele.children[0].cloneNode(true); 
+            console.log(newA)
+            newA.style.opacity = '1';
+            ele.appendChild(newA)
+            //cloneNode()
+           // console.log(ele.childNodes)
+            //console.log(ele.children)
+        })
+
+        list.forEach((ele)=>{
+            let childA = ele.children  ; 
+            console.log(childA)
+            console.log(childA.length)
+            //over
+            ele.addEventListener('mouseover',()=>{
+                for(let i=0;i<childA.length;i++){
+                    childA[i].style.top='-60px';
+                }
+            })
+            //out
+            ele.addEventListener('mouseout',()=>{
+                for(let i=0;i<childA.length;i++){
+                    childA[i].style.top='0px';
+                }
+            })
+            
+        })
+     </script>
 </body>
 </html>

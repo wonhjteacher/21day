@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link href="css/simson.css" rel="stylesheet">
-  
+    <style>
+        .type-b img{transition: top 0.15s;}
+        .type-c .inner{transition: top 0.15s;}
+        .gallery img{pointer-events:none;}
+    </style>
 </head>
 <body>
 <div id="wrapper">
@@ -34,8 +38,40 @@
     </ul>
 </div>
 <script>
+    const typeA = document.querySelectorAll('.type-a');
+    const typeB = document.querySelectorAll('.type-b');
+    const typeC = document.querySelectorAll('.type-c');
+   /* 타입 A */
+    typeA.forEach((ele)=>{
+        ele.addEventListener('mouseover',function(e){
+            this.style.borderRadius='20%';
+            this.style.borderWidth='3px';
+        })
+        ele.addEventListener('mouseout',function(e){
+            e.target.style.borderRadius='50%';
+            e.target.style.borderWidth='5px';
+        })
+    })
 
+    typeB.forEach(function(li){
+        li.addEventListener('mouseover',function(e){
+            e.target.children[0].style.top='0px';
+        })
+        li.addEventListener('mouseout',function(e){
+            e.target.children[0].style.top='-30px';
+        })
+    })
 
+    typeC.forEach(function(li){
+        li.addEventListener('mouseenter',function(e){
+            e.target.children[0].style.top='-200px';
+        })
+        li.addEventListener('mouseleave',function(e){
+            e.target.children[0].style.top='0px';
+        })
+    })
+
+/* 타입 c  over 시 자식 .inner   top :-200px ,  out시  top :0px */
 </script>
 </body>
 </html>
